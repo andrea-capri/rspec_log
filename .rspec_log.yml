@@ -1,0 +1,11 @@
+---
+"Logged from: \e[1;33;49mprints test output in default color\e[0m":
+- Defaults2 Name1, some test code
+"Logged from: \e[1;33;49ma test!!\e[0m":
+- Defaults2 Name2, some test code
+"Logged from: \e[1;33;49mPrints test output in default color\e[0m":
+- Name1, some test code
+"Logged from: \e[1;33;49mSecond test\e[0m":
+- Name2, some test code
+"Logged from: \e[1;33;49mThird test\e[0m":
+- Name3, some test code
