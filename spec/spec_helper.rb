@@ -1,14 +1,10 @@
 require_relative '../lib/rspec_log'
 
-logs = nil
+logs = RSpecLog.new(newfile: true)
 
 RSpec.configure do |config|
   config.color = true
   config.formatter = 'RainbowDocumentation'
-
-  config.before :suite do
-    logs = RSpecLog.new(newfile: true)
-  end
 
   config.after :all do
     logs.write_file
