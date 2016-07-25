@@ -6,19 +6,21 @@ DEFAULT_LOG_FILE = '.rspec_log.yml'.freeze
 # Class that allows for displaying logs or general messages at that are consistent across rspec tests
 class RSpecLog
   def initialize(filename: DEFAULT_LOG_FILE, newfile: false)
+    raise 'RSpec must be defined to create RSpec log' if (defined? RSpec).nil?
+
     @filename = filename
     RSpecLog.write_hash_to_file({}, @filename) if newfile || !File.exist?(filename)
     RSpecLog.log_hash_set(YAML.load_file(@filename))
   end
 
   # Writes log_hash to, by default, currently set log file or custom file passed to it
-  def write_file(filename = @filename)
+  def write_file(filename: @filename)
     raise 'Filename is not set, you need to initialize RSpecLog before writing' if filename.nil?
     RSpecLog.write_hash_to_file(RSpecLog.log_hash, filename)
   end
 
   # Parse the YAML log file and print it out in a nice manner
-  def self.print_logs_from_file(filename = DEFAULT_LOG_FILE)
+  def self.print_logs_from_file(filename: DEFAULT_LOG_FILE)
     file_contents = YAML.load_file(filename)
 
     return puts 'No logs found'.green if file_contents.empty?
