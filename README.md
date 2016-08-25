@@ -17,7 +17,6 @@ config.after :all do
   logs.write_file
 end
 
-at_exit { RSpecLog.print_logs_from_file }
 ```
 ```ruby
 RSpecLog.add_to_log('Name log', 'context info')

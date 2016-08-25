@@ -10,5 +10,3 @@ RSpec.configure do |config|
     logs.write_file
   end
 end
-
-at_exit { RSpecLog.print_logs_from_file }
