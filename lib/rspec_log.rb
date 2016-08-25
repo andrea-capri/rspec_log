@@ -12,7 +12,7 @@ class RSpecLog
     RSpecLog.write_hash_to_file({}, @filename) if newfile || !File.exist?(filename)
     RSpecLog.log_hash_set(YAML.load_file(@filename))
 
-    at_exit { RSpecLog.print_logs_from_file }
+    at_exit { RSpecLog.print_logs_from_file(filename: @filename) }
   end
 
   # Writes log_hash to, by default, currently set log file or custom file passed to it
