@@ -1,7 +1,7 @@
 require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:example) do |t|
+RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = 'spec/unit'
 end
 

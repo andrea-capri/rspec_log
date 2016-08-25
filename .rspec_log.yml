@@ -9,3 +9,5 @@
 - Name2, some test code
 "Logged from: \e[1;33;49mThird test\e[0m":
 - Name3, some test code
+"Logged from: \e[1;33;49mFailed test\e[0m":
+- Name3, some test code

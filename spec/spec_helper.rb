@@ -13,8 +13,6 @@ RSpec.configure do |config|
   config.after :all do
     logs.write_file
   end
-
-  config.after :suite do
-    RSpecLog.print_logs_from_file
-  end
 end
+
+at_exit { RSpecLog.print_logs_from_file }

@@ -10,6 +10,10 @@ describe 'RainbowWrapper First level' do
       it 'Third test' do
         RSpecLog.add_to_log 'Name3', 'some test code'
       end
+      it 'Failed test' do
+        RSpecLog.add_to_log 'Name3', 'some test code'
+        raise 'arg'
+      end
     end
   end
 end
