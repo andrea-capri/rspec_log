@@ -25,7 +25,7 @@ class RSpecLog
   def self.print_logs_from_file(filename: DEFAULT_LOG_FILE)
     file_contents = YAML.load_file(filename)
 
-    return puts 'No logs found'.green if file_contents.empty?
+    return if file_contents.empty?
     puts 'RSpecLogs: '.yellow.bold
 
     file_contents.each do |key, value|
