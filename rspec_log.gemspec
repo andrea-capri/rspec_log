@@ -1,9 +1,10 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')
+require 'rspec_log/version'
 
 Gem::Specification.new do |s|
   s.name        = 'rspec_log'
-  s.version     = `git describe --tags`.freeze if (/fatal/ =~ `git describe --tags`).nil?
-  s.date        = Date.today
+  s.version     = RspecLog::VERSION || raise('Commit has not been tagged for release')
+  s.date        = RspecLog::RELEASE_DATE
 
   s.summary     = 'An RSpec Logger that is persistent throughout multiple rspec files'
   s.description = %(
