@@ -1,3 +1,14 @@
+PATH
+  remote: .
+  specs:
+    rspec_log (0.0.7)
+      colorize
+      psych
+      rainbow_documentation
+      rake
+      rspec (~> 3.0)
+      rubocop
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,12 +48,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  colorize
-  psych
-  rainbow_documentation
-  rake
-  rspec
-  rubocop
+  rspec_log!
 
 BUNDLED WITH
-   1.12.5
+   1.13.5
