@@ -42,8 +42,6 @@ class RSpecLog
     log_hash_set(log_hash)
   end
 
-  private_class_method
-
   def self.write_hash_to_file(log_hash, filename = DEFAULT_LOG_FILE)
     File.open(filename, 'w') { |f| f.write(YAML.dump(log_hash, line_width: -1)) }
   end
