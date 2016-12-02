@@ -9,7 +9,7 @@ GEM
     powerpack (0.1.1)
     psych (2.1.0)
     rainbow (2.1.0)
-    rainbow_documentation (0.1.0)
+    rainbow_documentation (0.1.1)
     rake (11.2.2)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)

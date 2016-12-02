@@ -9,7 +9,7 @@ class RSpecLog
     raise 'RSpec must be defined to create RSpec log' if (defined? RSpec).nil?
 
     @filename = filename
-    RSpecLog.write_hash_to_file({}, @filename) if newfile || !File.exist?(filename)
+    RSpecLog.write_hash_to_file({}, @filename) if newfile || !File.exist?(@filename)
     RSpecLog.log_hash_set(YAML.load_file(@filename))
 
     at_exit { RSpecLog.print_logs_from_file(filename: @filename) }
@@ -23,14 +23,14 @@ class RSpecLog
 
   # Parse the YAML log file and print it out in a nice manner
   def self.print_logs_from_file(filename: DEFAULT_LOG_FILE)
-    file_contents = YAML.load_file(filename)
+    file_contents = RSpecLog.load_yaml_log(filename)
 
-    return if file_contents.empty?
-    puts 'RSpecLogs: '.yellow.bold
+    return if file_contents.nil? || file_contents.empty?
+    puts 'RSpecLogs:'.blue.underline
 
     file_contents.each do |key, value|
       puts key
-      value.each { |v| puts " - #{v.to_s.yellow}" }
+      value.each { |v| puts "  - #{v.to_s.yellow}" }
     end
   end
 
@@ -43,6 +43,13 @@ class RSpecLog
   end
 
   private_class_method
+
+  def self.load_yaml_log(filename)
+    YAML.load_file(filename)
+  rescue StandardError => e
+    puts e.to_s.yellow
+    nil
+  end
 
   def self.write_hash_to_file(log_hash, filename = DEFAULT_LOG_FILE)
     File.open(filename, 'w') { |f| f.write(YAML.dump(log_hash, line_width: -1)) }
@@ -57,6 +64,6 @@ class RSpecLog
   end
 
   def self.current_node
-    ENV.fetch('TARGET_HOST', "Logged from: #{RSpec.current_example.description.yellow.bold}")
+    ENV.fetch('TARGET_HOST', "#{RSpec.current_example.description}:".blue.bold)
   end
 end
